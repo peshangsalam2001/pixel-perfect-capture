@@ -39,7 +39,7 @@ function Account() {
 
   async function save() {
     const { error } = await supabase.from("profiles").upsert({ id: user.id, full_name: name.trim().slice(0, 100), phone: phone.trim().slice(0, 20) });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success(t("saved"));
   }
   async function signOut() {
