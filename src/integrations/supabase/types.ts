@@ -14,7 +14,125 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      plans: {
+        Row: {
+          id: string
+          in_stock: boolean
+          label_ar: string
+          label_en: string
+          label_ku: string
+          months: number
+          old_price_iqd: number | null
+          price_iqd: number
+          product_id: string
+          sort: number
+        }
+        Insert: {
+          id?: string
+          in_stock?: boolean
+          label_ar: string
+          label_en: string
+          label_ku: string
+          months: number
+          old_price_iqd?: number | null
+          price_iqd: number
+          product_id: string
+          sort?: number
+        }
+        Update: {
+          id?: string
+          in_stock?: boolean
+          label_ar?: string
+          label_en?: string
+          label_ku?: string
+          months?: number
+          old_price_iqd?: number | null
+          price_iqd?: number
+          product_id?: string
+          sort?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plans_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          accent: string
+          brand: string
+          category: string
+          created_at: string
+          desc_ar: string
+          desc_en: string
+          desc_ku: string
+          featured: boolean
+          id: string
+          name_ar: string
+          name_en: string
+          name_ku: string
+          slug: string
+          sort: number
+        }
+        Insert: {
+          accent?: string
+          brand: string
+          category: string
+          created_at?: string
+          desc_ar?: string
+          desc_en?: string
+          desc_ku?: string
+          featured?: boolean
+          id?: string
+          name_ar: string
+          name_en: string
+          name_ku: string
+          slug: string
+          sort?: number
+        }
+        Update: {
+          accent?: string
+          brand?: string
+          category?: string
+          created_at?: string
+          desc_ar?: string
+          desc_en?: string
+          desc_ku?: string
+          featured?: boolean
+          id?: string
+          name_ar?: string
+          name_en?: string
+          name_ku?: string
+          slug?: string
+          sort?: number
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string | null
+          id: string
+          phone?: string | null
+        }
+        Update: {
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
